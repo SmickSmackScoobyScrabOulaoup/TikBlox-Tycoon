@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikBlox Tycoon - Connexion TikTok</title>
+</head>
+<body>
+    <h1>Connexion TikTok</h1>
+    <p id="status">Connexion en cours...</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+        const code = params.get("code");
+        const state = params.get("state");
+        const error = params.get("error");
+
+        const status = document.getElementById("status");
+
+        if (error) {
+            status.textContent = "La connexion TikTok a été annulée.";
+        } else if (code) {
+            status.textContent = "Autorisation TikTok reçue.";
+            console.log("Authorization code received.");
+            console.log("State:", state);
+        } else {
+            status.textContent = "Aucun code TikTok reçu.";
+        }
+    </script>
+</body>
+</html>
